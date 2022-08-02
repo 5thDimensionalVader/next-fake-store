@@ -85,10 +85,11 @@ const LinkContainer = tw.div`
   lg:visible
   w-0
   lg:w-1/2 
-  flex items-center space-x-6
+  flex 
+  items-center 
+  space-x-6
   tracking-wide
   justify-end
-  
 `;
 
 //  bg-blue-500   hover:bg-blue-600 transition duration-200

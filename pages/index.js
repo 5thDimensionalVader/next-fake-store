@@ -7,6 +7,7 @@ import CarouselItem from '../src/components/CarouselItem';
 export default function Home({ imgProducts, products }) {
   const router = useRouter();
   const carouselValue = 6;
+  const productTileValue = 4;
 
 
   return (
@@ -15,18 +16,20 @@ export default function Home({ imgProducts, products }) {
         <title>Fake Shop</title>
       </Head>
 
+      {/* Hero Section */}
       <HeroSection>
-        <Tagline className="text-stone-500 drop-shadow-md font-serif"><span className='text-zinc-500 underline cursor-pointer hover:text-zinc-600 transition duration-100'>Shop</span> for the best products here!</Tagline>
+        <Tagline className=""><span className='text-zinc-500 underline cursor-pointer hover:text-zinc-600 transition duration-100'>Shop</span> for the best products here!</Tagline>
       </HeroSection>
 
+      {/* Images & Shop Now Btn Section */}
       <ImagesButtonSection>
         <ImagesContainer>
           {
-            imgProducts?.map((product,index) => (
+            imgProducts?.map((product, index) => (
               <Image className='cursor-pointer scale-95 hover:scale-100 transition duration-300'
                 src={product?.image}
                 width={330}
-                height={index==1?250:210}
+                height={index == 1 ? 250 : 210}
                 objectFit="contain"
                 key={product?.id}
               />
@@ -38,6 +41,7 @@ export default function Home({ imgProducts, products }) {
         </HomeUIBtn>
       </ImagesButtonSection>
 
+      {/* Featured Products Section */}
       <FeaturedProductsSection>
         <FeaturedProductText className="font-serif text-stone-500">Featured Products</FeaturedProductText>
         <FeaturedProductCarouselContainer>
@@ -51,10 +55,11 @@ export default function Home({ imgProducts, products }) {
         </FeaturedProductCarouselContainer>
       </FeaturedProductsSection>
 
+      {/* News Letter Section */}
       <NewsLetterSection>
         <NewsLetterLeftSide>
           <span className="text-2xl xl:text-4xl">Newsletter</span>
-          <p className="text-base text-slate-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi magni delectus iste aperiam molestias non.</p>
+          <p className="text-base text-slate-400">Subscribe to our monthly newsletters to get updates on the best selling products at Fake Store!</p>
         </NewsLetterLeftSide>
         <NewsLetterRightSide>
           <input type="text" placeholder='Email Address' className="p-4 border border-slate-400 focus:outline-none focus:border-stone-400 rounded" />
@@ -62,6 +67,8 @@ export default function Home({ imgProducts, products }) {
         </NewsLetterRightSide>
       </NewsLetterSection>
 
+      {/* About Us Section */}
+      
     </>
   )
 }
@@ -94,7 +101,9 @@ const HeroSection = tw.section`
 
 const Tagline = tw.h3`
   text-2xl
-  
+  text-stone-500 
+  drop-shadow-md 
+  font-serif
   px-4
   xl:text-4xl
 `;
@@ -125,11 +134,9 @@ const ImagesContainer = tw.div`
 
 
 const HomeUIBtn = tw.button`
-
 lg:bg-blue-400
 underline
 lg:no-underline
-
 text-slate-500
 lg:text-blue-50
 rounded-full
@@ -186,7 +193,7 @@ const NewsLetterSection = tw.section`
   xl:flex
   xl:items-center
   mx-auto
-  lg:px-32
+  xl:px-32
   py-14
   xl:flex-row
   xl:space-x-48
@@ -216,3 +223,4 @@ const NewsLetterRightSide = tw.div`
   xl:w-1/2
   xl:space-x-6
 `;
+

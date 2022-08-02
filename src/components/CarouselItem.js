@@ -5,7 +5,7 @@ import tw from 'tailwind-styled-components/dist/tailwind';
 const CarouselItem = ({ productTitle, productImg, productPrice }) => {
   return (
     <>
-      <CarouselItemContainer className="cursor-pointer hover:text-blue-500 transition duration-200 hover:underline">
+      <CarouselItemContainer>
         <Image
           src={productImg}
           width={330}
@@ -34,4 +34,8 @@ const CarouselItemContainer = tw.div`
   xl:min-h-[210px]
   overflow-hidden
   mt-6
+  cursor-pointer 
+  hover:text-blue-500 
+  transition 
+  duration-200
 `;
