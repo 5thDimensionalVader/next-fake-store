@@ -7,7 +7,6 @@ import CarouselItem from '../src/components/CarouselItem';
 export default function Home({ imgProducts, products }) {
   const router = useRouter();
   const carouselValue = 6;
-  const productTileValue = 4;
 
 
   return (
@@ -18,7 +17,7 @@ export default function Home({ imgProducts, products }) {
 
       {/* Hero Section */}
       <HeroSection>
-        <Tagline className=""><span className='text-zinc-500 underline cursor-pointer hover:text-zinc-600 transition duration-100'>Shop</span> for the best products here!</Tagline>
+        <Tagline><span className='text-zinc-500 underline cursor-pointer hover:text-zinc-600 transition duration-100'>Shop</span> for the best products here!</Tagline>
       </HeroSection>
 
       {/* Images & Shop Now Btn Section */}
@@ -58,7 +57,7 @@ export default function Home({ imgProducts, products }) {
       {/* News Letter Section */}
       <NewsLetterSection>
         <NewsLetterLeftSide>
-          <span className="text-2xl xl:text-4xl">Newsletter</span>
+          <span className="text-2xl xl:text-4xl font-serif text-stone-500">Newsletter</span>
           <p className="text-base text-slate-400">Subscribe to our monthly newsletters to get updates on the best selling products at Fake Store!</p>
         </NewsLetterLeftSide>
         <NewsLetterRightSide>
@@ -68,7 +67,10 @@ export default function Home({ imgProducts, products }) {
       </NewsLetterSection>
 
       {/* About Us Section */}
-      
+      <AboutUsSection id="about">
+        <span className="text-2xl xl:text-4xl font-serif text-stone-500">About Fake Store</span>
+        <p className="text-base text-slate-400 px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe consectetur error maxime vitae delectus ab minus est modi tempora fugit.</p>
+      </AboutUsSection>
     </>
   )
 }
@@ -129,24 +131,23 @@ const ImagesContainer = tw.div`
   items-center
   justify-center
   mx-auto
-  
 `;
 
 
 const HomeUIBtn = tw.button`
-lg:bg-blue-400
-underline
-lg:no-underline
+xl:bg-blue-400
+  underline
+  xl:no-underline
 text-slate-500
-lg:text-blue-50
-rounded-full
-space-x-2
-px-6
-py-3
-lg:px-12
-lg:py-4
-tracking-wide
-lg:hover:bg-blue-500 transition duration-200
+xl:text-blue-50
+  rounded-full
+  space-x-2
+  px-6
+  py-3
+  xl:px-12
+  xl:py-4
+  tracking-wide
+xl:hover:bg-blue-500 transition duration-200
 `;
 
 const FeaturedProductsSection = tw.section`
@@ -224,3 +225,16 @@ const NewsLetterRightSide = tw.div`
   xl:space-x-6
 `;
 
+const AboutUsSection = tw.div`
+  flex
+  flex-col
+  items-center
+  text-center
+  mx-auto
+  text-base
+  space-y-3
+  xl:px-32
+  py-12
+  border-b
+  border-slate-400
+`;

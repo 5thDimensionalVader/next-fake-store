@@ -20,7 +20,7 @@ const Header = () => {
           <LinkContainer>
             {
               navLink.map((link, index) => (
-                <Link key={index} href={link?.path} className="navLink">
+                <Link key={index} href={link?.path}>
                   <span className='hover:text-black hover:border-b-2 hover:border-slate-600 transition duration-100 cursor-pointer'>{link?.name}</span>
                 </Link>
               ))

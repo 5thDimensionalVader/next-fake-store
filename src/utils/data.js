@@ -1,3 +1,4 @@
+import NavItem from "../components/NavItem";
 export const navLink = [
   {
     name: "Home",
@@ -8,11 +9,11 @@ export const navLink = [
     path: "/shop"
   },
   {
-    name: "About",
-    path: "/about"
-  },
-  {
     name: "Help",
     path: "/help"
+  },
+  {
+    name: <NavItem item="About"/>,
+    path: "#about"
   },
 ];
