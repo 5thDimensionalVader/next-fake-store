@@ -6,7 +6,7 @@ import CarouselItem from '../src/components/CarouselItem';
 
 export default function Home({ imgProducts, products }) {
   const router = useRouter();
-  const carouselValue = 6;
+  const carouselValue = 8;
 
 
   return (
@@ -25,7 +25,7 @@ export default function Home({ imgProducts, products }) {
         <ImagesContainer>
           {
             imgProducts?.map((product, index) => (
-              <Image className='cursor-pointer scale-95 hover:scale-100 transition duration-300'
+              <Image className='scale-95 hover:scale-100 transition duration-300'
                 src={product?.image}
                 width={330}
                 height={index == 1 ? 250 : 210}
@@ -47,7 +47,7 @@ export default function Home({ imgProducts, products }) {
           <FeaturedProductCollection >
             {
               products?.map((product, index) => index < carouselValue && (
-                <CarouselItem key={product?.id} productPrice={product?.price} productTitle={product?.title} productImg={product?.image} />
+                <CarouselItem key={product?.id} productPrice={product?.price} productTitle={product?.title} productImg={product?.image} productId={product?.id} productCat={product?.category} />
               ))
             }
           </FeaturedProductCollection>
@@ -174,8 +174,8 @@ const FeaturedProductCarouselContainer = tw.div`
   flex-col 
   space-y-2
   px-14
-  max-w-sm
-  xl:max-w-[1400px]
+  max-w-[350px]
+  xl:max-w-[1200px]
   mx-auto
 `;
 

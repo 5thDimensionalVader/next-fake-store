@@ -3,8 +3,21 @@ import { useRouter } from 'next/router';
 import tw from 'tailwind-styled-components/dist/tailwind';
 import Head from 'next/head';
 import Image from 'next/image';
+import ProductTile from '../../src/components/ProductTile';
+import { useCartContext } from '../../src/context/CartProvider';
 
-const Product = ({ product }) => {
+
+const Product = ({ product, category }) => {
+  const similarValue = 3;
+  const productId = product?.id;
+  const router = useRouter();
+  const { setCart, cart } = useCartContext();
+
+  const handleAdd = () => {
+    setCart([...cart, product]);
+    router.push('/');
+  }
+
   return (
     <div className="border-y border-slate-400">
       <Head>
@@ -41,13 +54,22 @@ const Product = ({ product }) => {
             <p>{product?.description}</p>
           </div>
           <div className="border-t border-slate-400 px-3 py-6">
-            <Add2CartBtn>Add to Cart</Add2CartBtn>
+            <Add2CartBtn onClick={handleAdd}>Add to Cart</Add2CartBtn>
           </div>
         </ProductInformationRight>
       </ProductInformationSection>
 
       {/* Similar Product Section */}
-
+      <SimilarProductSection>
+        <span className="text-2xl xl:text-4xl font-serif text-stone-500 tracking-wide">Similar Products</span>
+        <div className="flex flex-col xl:flex-row items-center mx-auto gap-[20px]">
+          {
+            category?.filter((product) => product?.id != productId)?.map((product, index) => index < similarValue && (
+              <ProductTile key={product?.id} productId={product?.id} productImg={product?.image} productRating={product?.rating?.rate} productTitle={product?.title} productPrice={product?.price} />
+            ))
+          }
+        </div>
+      </SimilarProductSection>
     </div>
   )
 }
@@ -57,10 +79,15 @@ export default Product;
 export const getServerSideProps = async (context) => {
 
   const { id } = context?.query;
-  const request = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json());
+  const { productCat } = context?.query;
+
+  const productRes = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json());
+  const productCatRes = await fetch(`https://fakestoreapi.com/products/category/${productCat}`).then((res) => res.json());
+
   return {
     props: {
-      product: request,
+      product: productRes,
+      category: productCatRes,
     }
   }
 }
@@ -109,5 +136,13 @@ xl:text-blue-50
 xl:hover:bg-blue-500 transition duration-200
  `;
 const SimilarProductSection = tw.section`
-
+  flex
+  flex-col
+  items-center
+  mx-auto
+  space-y-3
+  px-5
+  py-8
+  border-t
+  border-slate-400
 `;

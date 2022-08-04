@@ -4,10 +4,13 @@ import tw from 'tailwind-styled-components/dist/tailwind';
 import { navLink } from '../utils/data';
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useRouter } from 'next/router';
+import { useCartContext } from '../context/CartProvider';
 
 const Header = () => {
   // router
   const router = useRouter();
+  // cart from context
+  const { cart } = useCartContext();
 
   return (
     <>
@@ -26,12 +29,17 @@ const Header = () => {
               ))
             }
             <CartBtn>
-              <ShoppingCartIcon className="h-4 self-center"/>
+              <ShoppingCartIcon className="h-4 self-center" />
               <span>Your Cart</span>
-              {/* <span className="badge">99+</span> */}
+              <span className={cart?.length === 0 ? "hidden" : "badge"}>{cart?.length}</span>
             </CartBtn>
           </LinkContainer>
-          <div className="bg w-1/2 pt-5 pr-5 text-zinc-500 text-right lg:hidden">Click</div>
+          <div className="bg w-1/2 pt-5 pr-5 text-zinc-500 text-right xl:hidden">
+            <span className="inline-flex items-baseline">
+              <ShoppingCartIcon className="h-6 self-center text-blue-400" />
+              <span className={cart?.length === 0 ? "hidden" : "badge"}>{cart?.length}</span>
+            </span>
+          </div>
         </NavBar>
       </Wrapper>
     </>

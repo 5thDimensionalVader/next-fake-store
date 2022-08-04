@@ -1,11 +1,16 @@
 import Image from 'next/image';
 import React from 'react';
 import tw from 'tailwind-styled-components/dist/tailwind';
+import { useRouter } from 'next/router';
 
-const CarouselItem = ({ productTitle, productImg, productPrice }) => {
+const CarouselItem = ({ productTitle, productImg, productPrice, productId, productCat }) => {
+  const router = useRouter();
   return (
     <>
-      <CarouselItemContainer>
+      <CarouselItemContainer onClick={() => router.push({
+        pathname: `/product/${productId}`,
+        query: { productCat: productCat.toString() },
+      }, `/product/${productId}`)}>
         <Image
           src={productImg}
           width={330}

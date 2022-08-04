@@ -13,7 +13,7 @@ export const navLink = [
     path: "/help"
   },
   {
-    name: <NavItem item="About"/>,
+    name: <NavItem item="About" />,
     path: "#about"
   },
 ];

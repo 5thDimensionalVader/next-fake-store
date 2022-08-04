@@ -2,8 +2,10 @@ import React from 'react';
 import tw from 'tailwind-styled-components/dist/tailwind';
 import { navLink } from '../utils/data';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Footer = () => {
+  const router = useRouter();
   return (
     <>
       <FooterContainer>
@@ -37,6 +39,7 @@ const FooterContainer = tw.footer`
   items-center
   space-y-4
   h-[72px]
+  mt-2
 `;
 
 const LinkContainer = tw.div`
