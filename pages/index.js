@@ -98,7 +98,6 @@ const HeroSection = tw.section`
   space-y-4
   mx-auto
   my-14
-  
 `;
 
 const Tagline = tw.h3`
@@ -119,7 +118,6 @@ const ImagesButtonSection = tw.section`
   mx-auto
   space-y-10
   py-8
-  
 `;
 
 const ImagesContainer = tw.div`
