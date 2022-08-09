@@ -32,7 +32,7 @@ const TileContainer = tw.div`
   flex-row
   items-center
   mx-auto
-  space-x-3
+  space-x-[10px]
   max-w-sm
   p-2
   border
@@ -40,9 +40,6 @@ const TileContainer = tw.div`
   rounded-md
   shadow-md
   cursor-pointer
-  hover:text-blue-500 
-  transition 
-  duration-200
   text-slate-700
 `
 const TileContainerLeft = tw.div`

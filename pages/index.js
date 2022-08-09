@@ -58,7 +58,7 @@ export default function Home({ imgProducts, products }) {
       <NewsLetterSection>
         <NewsLetterLeftSide>
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">Newsletter</span>
-          <p className="text-base text-slate-400">Subscribe to our monthly newsletters to get updates on the best selling products at Fake Store!</p>
+          <p className="text-base text-stone-400">Subscribe to our monthly newsletters to get updates on the best selling products at Fake Store!</p>
         </NewsLetterLeftSide>
         <NewsLetterRightSide>
           <input type="text" placeholder='Email Address' className="p-4 border border-slate-400 focus:outline-none focus:border-stone-400 rounded" />
@@ -69,7 +69,7 @@ export default function Home({ imgProducts, products }) {
       {/* About Us Section */}
       <AboutUsSection id="about">
         <span className="text-2xl xl:text-4xl font-serif text-stone-500">About Fake Store</span>
-        <p className="text-base text-slate-400 px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe consectetur error maxime vitae delectus ab minus est modi tempora fugit.</p>
+        <p className="text-base text-stone-400 px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe consectetur error maxime vitae delectus ab minus est modi tempora fugit.</p>
       </AboutUsSection>
     </>
   )
