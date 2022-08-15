@@ -3,7 +3,6 @@ import tw from 'tailwind-styled-components/dist/tailwind';
 import Head from 'next/head';
 import CategoryTile from '../src/components/CategoryTile';
 import Image from 'next/image';
-import ProductTile from '../src/components/ProductTile';
 import ShopProductTile from '../src/components/ShopProductTile';
 
 const Shop = ({ categories, browseProducts }) => {
