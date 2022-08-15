@@ -3,8 +3,10 @@ import tw from 'tailwind-styled-components/dist/tailwind';
 import Head from 'next/head';
 import CategoryTile from '../src/components/CategoryTile';
 import Image from 'next/image';
+import ProductTile from '../src/components/ProductTile';
+import ShopProductTile from '../src/components/ShopProductTile';
 
-const Shop = ({ categories }) => {
+const Shop = ({ categories, browseProducts }) => {
   const categoryValue = 3;
   return (
     <div>
@@ -50,6 +52,22 @@ const Shop = ({ categories }) => {
           </div>
         </NewsLetterRightSide>
       </NewsLetterSection>
+
+      {/* All Product Section */}
+      <AllProductSection>
+        <AllProductLeftSide>
+          <span className="text-2xl xl:text-4xl font-serif text-stone-500">Browse All Products</span>
+          <span className="text-base xl:text-sm font-serif text-stone-400 xl:text-center max-w-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptatum quas quisquam vel iste nobis!</span>
+          <ShopUiBtn>Browse All</ShopUiBtn>
+        </AllProductLeftSide>
+        <AllProductRightSide>
+          {
+            browseProducts?.filter((product) => product?.rating?.rate > 3.8)?.map((product, index) => index < 8 && (
+              <ShopProductTile key={product?.id} productId={product?.id} productImg={product?.image} productRating={product?.rating?.rate} productTitle={product?.title} productPrice={product?.price} productCat={product?.category} />
+            ))
+          }
+        </AllProductRightSide>
+      </AllProductSection>
     </div>
   )
 }
@@ -58,10 +76,13 @@ export default Shop;
 
 export const getServerSideProps = async () => {
   const categoryRes = await fetch("https://fakestoreapi.com/products/categories").then((res) => res.json());
+  const browseProductRes = await fetch("https://fakestoreapi.com/products").then((res) => res.json());
+
 
   return {
     props: {
       categories: categoryRes,
+      browseProducts: browseProductRes,
     }
   }
 }
@@ -118,7 +139,6 @@ const FeaturedCategoriesItems = tw.div`
   grid
   grid-cols-2
   xl:grid-cols-4
-  overflow-hidden
   gap-[10px]
   xl:flex-row
   xl:space-x-2
@@ -158,5 +178,31 @@ const NewsLetterRightSide = tw.div`
 `;
 
 const AllProductSection = tw.section`
-  
+  flex
+  flex-col
+  items-center
+  space-y-[20px]
+  xl:flex-row
+  border-b
+border-slate-400
+  py-[40px]
+`;
+
+const AllProductLeftSide = tw.div`
+  flex
+  flex-col
+  items-center
+  mx-auto
+  xl:w-[30%]
+  space-y-[20px]
+`;
+
+const AllProductRightSide = tw.div`
+  flex
+  flex-col
+  items-center
+  xl:grid
+  xl:grid-cols-2
+  gap-[20px]
+  xl:w-[70%]
 `;

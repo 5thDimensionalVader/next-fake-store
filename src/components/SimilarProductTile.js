@@ -2,11 +2,17 @@ import React from 'react';
 import tw from 'tailwind-styled-components/dist/tailwind';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { StarIcon } from "@heroicons/react/solid";
+import Rating from 'react-rating';
 
-const ProductTile = ({ productImg, productTitle, productRating, productPrice, productId }) => {
+const SimilarProductTile = ({ productImg, productTitle, productRating, productPrice, productId, productCat }) => {
   const router = useRouter();
+
   return (
-    <TileContainer>
+    <TileContainer onClick={() => router.replace({
+      pathname: `/product/${productId}`,
+      query: { productCat: productCat.toString() },
+    }, `/product/${productId}`)}>
       <TileContainerLeft>
         <Image
           src={productImg}
@@ -17,14 +23,16 @@ const ProductTile = ({ productImg, productTitle, productRating, productPrice, pr
       </TileContainerLeft>
       <TileContainerRight>
         <span>{productTitle}</span>
-        <span>{productRating} star(s)</span>
+        <span>
+          <Rating initialRating={productRating} emptySymbol={<StarIcon className="h-4 text-slate-500" />} fullSymbol={<StarIcon className="h-4 text-yellow-400" />} readonly />
+        </span>
         <span>${productPrice}</span>
       </TileContainerRight>
     </TileContainer>
   )
 }
 
-export default ProductTile;
+export default SimilarProductTile;
 
 const TileContainer = tw.div`
   container

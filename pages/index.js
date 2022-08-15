@@ -46,7 +46,7 @@ export default function Home({ imgProducts, products }) {
         <FeaturedProductCarouselContainer>
           <FeaturedProductCollection >
             {
-              products?.map((product, index) => index < carouselValue && (
+              products?.filter((product) => product?.price >= 110)?.map((product, index) => index < carouselValue && (
                 <CarouselItem key={product?.id} productPrice={product?.price} productTitle={product?.title} productImg={product?.image} productId={product?.id} productCat={product?.category} />
               ))
             }

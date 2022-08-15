@@ -3,8 +3,10 @@ import { useRouter } from 'next/router';
 import tw from 'tailwind-styled-components/dist/tailwind';
 import Head from 'next/head';
 import Image from 'next/image';
-import ProductTile from '../../src/components/ProductTile';
 import { useCartContext } from '../../src/context/CartProvider';
+import SimilarProductTile from '../../src/components/SimilarProductTile';
+import Rating from 'react-rating';
+import { StarIcon } from "@heroicons/react/solid";
 
 
 const Product = ({ product, category }) => {
@@ -12,16 +14,16 @@ const Product = ({ product, category }) => {
   const productId = product?.id;
   const router = useRouter();
   const { setCart, cart } = useCartContext();
-
+  
   const handleAdd = () => {
     setCart([...cart, product]);
-    router.push('/');
+    router.push('/shop');
   }
 
   return (
     <div className="border-y border-slate-400">
       <Head>
-        <title>{product?.title}- Fake Shop</title>
+        <title>{product?.title} - Fake Shop</title>
       </Head>
 
       {/* ProductInformationSection */}
@@ -39,7 +41,9 @@ const Product = ({ product, category }) => {
         <ProductInformationRight>
           <span className="text-2xl xl:text-3xl">{product?.title}</span>
           <div className="flex items-center mx-auto xl:mx-0 gap-[20px]">
-            <span>{product?.rating?.rate} star(s)</span>
+            <span>
+              <Rating initialRating={product?.rating?.rate} emptySymbol={<StarIcon className="h-4 text-slate-500" />} fullSymbol={<StarIcon className="h-4 text-yellow-400" />} readonly />
+            </span>
             <span>{product?.rating?.count} reviews</span>
           </div>
           <div className="flex items-center mx-auto xl:mx-0 gap-[20px] xl:gap-[150px] border-y border-slate-400 px-3 py-6">
@@ -65,7 +69,7 @@ const Product = ({ product, category }) => {
         <div className="flex flex-col xl:flex-row items-center mx-auto gap-[20px]">
           {
             category?.filter((product) => product?.id != productId)?.map((product, index) => index < similarValue && (
-              <ProductTile key={product?.id} productId={product?.id} productImg={product?.image} productRating={product?.rating?.rate} productTitle={product?.title} productPrice={product?.price} />
+              <SimilarProductTile key={product?.id} productId={product?.id} productImg={product?.image} productRating={product?.rating?.rate} productTitle={product?.title} productPrice={product?.price} productCat={product?.category} />
             ))
           }
         </div>
@@ -80,6 +84,10 @@ export const getServerSideProps = async (context) => {
 
   const { id } = context?.query;
   const { productCat } = context?.query;
+
+  // save the productCat query in session storage
+  // sessionStorage.setItem("localProductCat", productCat);
+  // const localProductCat = sessionStorage.getItem("localProductCat");
 
   const productRes = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json());
   const productCatRes = await fetch(`https://fakestoreapi.com/products/category/${productCat}`).then((res) => res.json());
