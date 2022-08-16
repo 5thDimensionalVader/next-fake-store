@@ -10,16 +10,18 @@ const Category = ({ productCategory, catName }) => {
       <Head>
         <title>{catName?.toUpperCase()} - Fake Store</title>
       </Head>
-      <CategorySection>
-        <span className="text-2xl xl:text-4xl font-serif text-stone-500">{catName?.toUpperCase()}</span>
-        <CategoryItem>
-          {
-            productCategory?.map((product) => (
-              <ShopProductTile key={product?.id} productId={product?.id} productImg={product?.image} productRating={product?.rating?.rate} productTitle={product?.title} productPrice={product?.price} productCat={product?.category} />
-            ))
-          }
-        </CategoryItem>
-      </CategorySection>
+      <div className="min-h-[82vh] w-5/6 mx-auto"> 
+        <CategorySection>
+          <span className="text-2xl xl:text-4xl font-serif text-stone-500">{catName?.toUpperCase()}</span>
+          <CategoryItem>
+            {
+              productCategory?.map((product) => (
+                <ShopProductTile key={product?.id} productId={product?.id} productImg={product?.image} productRating={product?.rating?.rate} productTitle={product?.title} productPrice={product?.price} productCat={product?.category} />
+              ))
+            }
+          </CategoryItem>
+        </CategorySection>
+      </div>
     </>
   )
 }

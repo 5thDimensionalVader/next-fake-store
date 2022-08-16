@@ -13,19 +13,27 @@ const Footer = () => {
         {
             navLink.map((link, index) => (
               <Link key={index} href={link?.path}>
-                {link?.name}
+                  <span className='hover:text-black cursor-pointer transition duration-100'>{link?.name}</span>
               </Link>
             ))
           }
         </LinkContainer>
         <CompanyContainer>
-          <span>&copy;</span>
+          <span class="text-blue-500">&copy;</span>
           <BrandText>fake shop</BrandText>
         </CompanyContainer>
       </FooterContainer>
     </>
   )
 }
+
+// {
+//   navLink.map((link, index) => (
+//     <Link key={index} href={link?.path}>
+//       <span className='hover:text-black hover:border-b-2 hover:border-slate-600 transition duration-100 cursor-pointer'>{link?.name}</span>
+//     </Link>
+//   ))
+// }
 
 export default Footer;
 
@@ -37,15 +45,18 @@ const FooterContainer = tw.footer`
   flex
   flex-col
   items-center
-  space-y-4
   h-[72px]
   mt-2
 `;
 
 const LinkContainer = tw.div`
-  xl:flex items-center space-x-6
+  xl:flex items-center justify-center
   tracking-wide
+  text-stone-600
+  mt-2
+  space-x-6
 `;
+
 
 const CompanyContainer = tw.div`
   flex
@@ -59,4 +70,5 @@ const BrandText = tw.h1`
   uppercase
   tracking-wide
   text-blue-500
+  text-opacity-70
 `;
