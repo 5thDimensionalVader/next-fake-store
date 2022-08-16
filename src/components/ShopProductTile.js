@@ -48,6 +48,7 @@ const TileContainer = tw.div`
   shadow-md
   cursor-pointer
   text-slate-700
+  hover:text-blue-400
 `
 const TileContainerLeft = tw.div`
   flex

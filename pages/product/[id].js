@@ -14,10 +14,10 @@ const Product = ({ product, category }) => {
   const productId = product?.id;
   const router = useRouter();
   const { setCart, cart } = useCartContext();
-  
+
   const handleAdd = () => {
     setCart([...cart, product]);
-    router.push('/shop');
+    router.push('/browse');
   }
 
   return (

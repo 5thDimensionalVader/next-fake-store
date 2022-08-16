@@ -4,9 +4,11 @@ import Head from 'next/head';
 import CategoryTile from '../src/components/CategoryTile';
 import Image from 'next/image';
 import ShopProductTile from '../src/components/ShopProductTile';
+import { useRouter } from 'next/router';
 
 const Shop = ({ categories, browseProducts }) => {
-  const categoryValue = 3;
+  const router = useRouter();
+
   return (
     <div>
       <Head>
@@ -27,7 +29,7 @@ const Shop = ({ categories, browseProducts }) => {
         <FeaturedCategoriesItems>
           {
             categories?.map((category, index) => (
-              <CategoryTile key={index} catName={category?.toUpperCase()} />
+              <CategoryTile key={index} catName={category} />
             ))
           }
         </FeaturedCategoriesItems>
@@ -46,7 +48,7 @@ const Shop = ({ categories, browseProducts }) => {
         <NewsLetterRightSide>
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">Newsletter</span>
           <div className="flex items-center gap-[20px]">
-            <input type="search" placeholder="Search..." className="border border-slate-400 py-[10px] px-[10px] rounded-sm focus:outline-none focus:border-stone-400 xl:w-[450px]" />
+            <input type="search" placeholder="Email" className="border border-slate-400 py-[10px] px-[10px] rounded-sm focus:outline-none focus:border-stone-400 xl:w-[450px]" />
             <ShopUiBtn>Subscribe</ShopUiBtn>
           </div>
         </NewsLetterRightSide>
@@ -57,7 +59,7 @@ const Shop = ({ categories, browseProducts }) => {
         <AllProductLeftSide>
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">Browse All Products</span>
           <span className="text-base xl:text-sm font-serif text-stone-400 xl:text-center max-w-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptatum quas quisquam vel iste nobis!</span>
-          <ShopUiBtn>Browse All</ShopUiBtn>
+          <ShopUiBtn onClick={() => router.push("/browse")}>Browse All</ShopUiBtn>
         </AllProductLeftSide>
         <AllProductRightSide>
           {

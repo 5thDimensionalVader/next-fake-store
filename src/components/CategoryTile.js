@@ -1,18 +1,21 @@
 import React from 'react';
 import tw from 'tailwind-styled-components/dist/tailwind';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const CategoryTile = ({ catName }) => {
+  const router = useRouter();
+
   return (
     <>
-      <TileContainer>
+      <TileContainer onClick={() => router.push(`/category/${catName}`)}>
         <Image
           src={"https://via.placeholder.com/150.png"}
           width={150}
           height={150}
           objectFit="contain"
         />
-        <span className="text-sm py-[5px]">{catName}</span>
+        <span className="text-sm py-[5px]">{catName?.toUpperCase()}</span>
       </TileContainer>
     </>
   )
