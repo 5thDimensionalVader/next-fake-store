@@ -201,7 +201,8 @@ const AllProductLeftSide = tw.div`
 const AllProductRightSide = tw.div`
   flex
   flex-col
-  items-center
+  px-[10px]
+  xl:px-[20px]
   xl:grid
   xl:grid-cols-2
   gap-[20px]

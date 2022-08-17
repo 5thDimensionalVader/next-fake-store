@@ -7,7 +7,12 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const value = { cart, setCart };
+  // calculation
+  const subTotal = Math.round(cart?.map((product) => product?.price).reduce((previousValue, currentValue) => previousValue + currentValue, 0));
+  const taxes = Math.round((subTotal * 7.5) / 100);
+  const netTotal = Math.round((subTotal + taxes));
+
+  const value = { cart, setCart, subTotal, taxes, netTotal };
 
   return (
     <CartContext.Provider value={value}>

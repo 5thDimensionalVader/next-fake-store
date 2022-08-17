@@ -10,16 +10,16 @@ const Footer = () => {
     <>
       <FooterContainer>
         <LinkContainer>
-        {
+          {
             navLink.map((link, index) => (
               <Link key={index} href={link?.path}>
-                  <span className='hover:text-black cursor-pointer transition duration-100'>{link?.name}</span>
+                <span className='hover:text-black cursor-pointer transition duration-100'>{link?.name}</span>
               </Link>
             ))
           }
         </LinkContainer>
         <CompanyContainer>
-          <span class="text-blue-500">&copy;</span>
+          <span className="text-blue-500">&copy;</span>
           <BrandText>fake shop</BrandText>
         </CompanyContainer>
       </FooterContainer>
@@ -56,7 +56,6 @@ const LinkContainer = tw.div`
   mt-2
   space-x-6
 `;
-
 
 const CompanyContainer = tw.div`
   flex

@@ -40,7 +40,6 @@ const TileContainer = tw.div`
   items-center
   mx-auto
   space-x-[10px]
-  max-w-sm
   p-2
   border
   border-slate-300
@@ -53,14 +52,14 @@ const TileContainer = tw.div`
 const TileContainerLeft = tw.div`
   flex
   items-center
-  w-[40%]
+  w-[30%]
   p-6
 `;
 const TileContainerRight = tw.div`
   flex
   flex-col
   text-start
-  w-[60%]
+  w-[70%]
   px-3
   space-y-4
   border-l

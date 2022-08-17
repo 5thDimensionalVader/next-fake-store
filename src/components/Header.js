@@ -9,6 +9,7 @@ import { useCartContext } from '../context/CartProvider';
 const Header = () => {
   // router
   const router = useRouter();
+
   // cart from context
   const { cart } = useCartContext();
 
@@ -28,13 +29,13 @@ const Header = () => {
                 </Link>
               ))
             }
-            <CartBtn>
+            <CartBtn onClick={() => router.push("/cart")}>
               <ShoppingCartIcon className="h-4 self-center" />
               <span>Your Cart</span>
               <span className={cart?.length === 0 ? "hidden" : "badge"}>{cart?.length}</span>
             </CartBtn>
           </LinkContainer>
-          <div className="bg w-1/2 pt-5 pr-5 text-zinc-500 text-right xl:hidden">
+          <div className="bg w-1/2 pt-5 pr-5 text-zinc-500 text-right xl:hidden" onClick={() => router.push("/cart")}>
             <span className="inline-flex items-baseline">
               <ShoppingCartIcon className="h-6 self-center text-blue-400" />
               <span className={cart?.length === 0 ? "hidden" : "badge"}>{cart?.length}</span>

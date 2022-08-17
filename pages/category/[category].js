@@ -10,7 +10,7 @@ const Category = ({ productCategory, catName }) => {
       <Head>
         <title>{catName?.toUpperCase()} - Fake Store</title>
       </Head>
-      <div className="min-h-[82vh] w-5/6 mx-auto"> 
+      <div> 
         <CategorySection>
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">{catName?.toUpperCase()}</span>
           <CategoryItem>

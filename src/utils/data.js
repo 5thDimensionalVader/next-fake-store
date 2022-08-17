@@ -12,8 +12,4 @@ export const navLink = [
     name: "Help",
     path: "/help"
   },
-  // {
-  //   name: <NavItem item="About" />,
-  //   path: "#about"
-  // },
 ];
