@@ -2,10 +2,29 @@ import tw from "tailwind-styled-components/dist/tailwind";
 import Head from "next/head";
 import { useCartContext } from "../src/context/CartProvider";
 import CartProductTile from "../src/components/CartProductTile";
-import Alert from "../src/components/Alert";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const Cart = () => {
-  const { cart, subTotal, taxes, netTotal } = useCartContext();
+  const { cart, subTotal, taxes, netTotal, setCart } = useCartContext();
+  const router = useRouter();
+
+  const handleNextPage = () => {
+    if (!cart?.length) {
+      toast.warn("Cannot proceed with an empty cart", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        toastId: "nextPageToast",
+      })
+    } else {
+      router.push('/shipping')
+    }
+  }
 
   const emptyCartMsg = (
     <span className="text-base font-semibold text-stone-500">No items in cart</span>
@@ -38,8 +57,11 @@ const Cart = () => {
             }
           </div>
           <div className="flex items-center justify-center xl:justify-start gap-[10px]">
-            <CartUIBtn>Next</CartUIBtn>
-            <CartUIBtn>Cancel</CartUIBtn>
+            <NextCartBtn onClick={handleNextPage}>Next</NextCartBtn>
+            <CancelCartBtn onClick={() => {
+              setCart([])
+              router.push("/shop")
+            }}>Cancel</CancelCartBtn>
           </div>
         </CartLeftSide>
         {/* Summary Section */}
@@ -118,18 +140,28 @@ const CartRightSide = tw.div`
   xl:w-[45%]
   xl:my-[0px]
 `;
-const CartUIBtn = tw.button`
-xl:bg-blue-400
-  underline
-  xl:no-underline
-text-slate-500
-xl:text-blue-50
-  rounded-full
+const NextCartBtn = tw.button`
+bg-blue-400
+text-blue-50
+  rounded-md
   space-x-2
   px-6
   py-3
-  xl:px-12
-  xl:py-4
+  px-12
+  py-4
   tracking-wide
-xl:hover:bg-blue-500 transition duration-200
+hover:bg-blue-500 transition duration-200
+`;
+
+const CancelCartBtn = tw.button`
+bg-red-400
+text-blue-50
+  rounded-md
+  space-x-2
+  px-6
+  py-3
+  px-12
+  py-4
+  tracking-wide
+hover:bg-red-500 transition duration-200
 `;
