@@ -1,9 +1,14 @@
-import React from 'react'
+import tw from "tailwind-styled-components/dist/tailwind";
+import Head from "next/head";
 
 const Shipping = () => {
   return (
-    <div>Shipping</div>
+    <div>
+
+    </div>
   )
 }
 
 export default Shipping;
+
+// style ui components for shipping component

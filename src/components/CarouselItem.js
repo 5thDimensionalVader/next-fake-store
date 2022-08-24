@@ -10,7 +10,7 @@ const CarouselItem = ({ productTitle, productImg, productPrice, productId, produ
       <CarouselItemContainer onClick={() => router.push({
         pathname: `/product/${productId}`,
         query: { productCat: productCat.toString() },
-      }, `/product/${productId}`)}>
+      })}>
         <Image
           src={productImg}
           width={330}

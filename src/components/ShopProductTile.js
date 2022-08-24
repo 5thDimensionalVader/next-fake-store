@@ -11,7 +11,7 @@ const ShopProductTile = ({ productImg, productTitle, productRating, productPrice
     <TileContainer onClick={() => router.push({
       pathname: `/product/${productId}`,
       query: { productCat: productCat.toString() },
-    }, `/product/${productId}`)}>
+    })}>
       <TileContainerLeft>
         <Image
           src={productImg}

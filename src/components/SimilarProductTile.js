@@ -12,7 +12,7 @@ const SimilarProductTile = ({ productImg, productTitle, productRating, productPr
     <TileContainer onClick={() => router.replace({
       pathname: `/product/${productId}`,
       query: { productCat: productCat.toString() },
-    }, `/product/${productId}`)}>
+    })}>
       <TileContainerLeft>
         <Image
           src={productImg}

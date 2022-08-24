@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 import tw from 'tailwind-styled-components/dist/tailwind';
 import Head from 'next/head';
@@ -7,18 +6,45 @@ import { useCartContext } from '../../src/context/CartProvider';
 import SimilarProductTile from '../../src/components/SimilarProductTile';
 import Rating from 'react-rating';
 import { StarIcon } from "@heroicons/react/solid";
+import useSWR from 'swr';
+import { toast } from 'react-toastify';
+import { ThreeDots } from 'react-loader-spinner';
+import { useState } from 'react';
 
 
-const Product = ({ product, category }) => {
+const Product = ({ product }) => {
   const similarValue = 3;
   const productId = product?.id;
   const router = useRouter();
   const { setCart, cart } = useCartContext();
 
+  // fetcher for swr
+  const fetcher = (...args) => fetch(...args).then(res => res.json());
+
+  // useSWR
+  const { data, error } = useSWR(`https://fakestoreapi.com/products/category/${router.query?.productCat}`, fetcher);
+
+  // error notification
+  const errorNotify = () => {
+    toast.error("Something went wrong", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      toastId: "nextPageToast",
+    })
+  }
+
+  if (error) return errorNotify;
+
   const handleAdd = () => {
     setCart([...cart, product]);
     router.push('/browse');
   }
+
 
   return (
     <div className="border-y border-slate-400">
@@ -35,6 +61,7 @@ const Product = ({ product, category }) => {
               width={330}
               height={350}
               objectFit="contain"
+              alt="product-image"
             />
           }
         </ProductInformationLeft>
@@ -68,9 +95,22 @@ const Product = ({ product, category }) => {
         <span className="text-2xl xl:text-4xl font-serif text-stone-500 tracking-wide">Similar Products</span>
         <div className="flex flex-col xl:flex-row items-center mx-auto gap-[20px]">
           {
-            category?.filter((product) => product?.id != productId)?.map((product, index) => index < similarValue && (
-              <SimilarProductTile key={product?.id} productId={product?.id} productImg={product?.image} productRating={product?.rating?.rate} productTitle={product?.title} productPrice={product?.price} productCat={product?.category} />
-            ))
+            !data ? <ThreeDots
+              height="60"
+              width="60"
+              radius="9"
+              color="#60A5FA"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true} /> : (
+              <>
+                {
+                  data?.filter((product) => product?.id != productId)?.map((product, index) => index < similarValue && (
+                    <SimilarProductTile key={product?.id} productId={product?.id} productImg={product?.image} productRating={product?.rating?.rate} productTitle={product?.title} productPrice={product?.price} productCat={product?.category} />
+                  ))
+                }
+              </>)
           }
         </div>
       </SimilarProductSection>
@@ -83,19 +123,12 @@ export default Product;
 export const getServerSideProps = async (context) => {
 
   const { id } = context?.query;
-  const { productCat } = context?.query;
-
-  // save the productCat query in session storage
-  // sessionStorage.setItem("localProductCat", productCat);
-  // const localProductCat = sessionStorage.getItem("localProductCat");
 
   const productRes = await fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json());
-  const productCatRes = await fetch(`https://fakestoreapi.com/products/category/${productCat}`).then((res) => res.json());
 
   return {
     props: {
-      product: productRes,
-      category: productCatRes,
+      product: productRes
     }
   }
 }
