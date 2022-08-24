@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 const Cart = () => {
   const { cart, subTotal, taxes, netTotal, setCart } = useCartContext();
+  
   const router = useRouter();
 
   const handleNextPage = () => {
@@ -127,7 +128,7 @@ const CartLeftSide = tw.div`
   text-center
   space-y-[10px]
   my-[50px]
-  xl:w-[55%]
+  xl:w-[60%]
   xl:text-left
   xl:my-[0px]
 `;
@@ -137,7 +138,7 @@ const CartRightSide = tw.div`
   text-center
   my-[10px]
   space-y-[10px]
-  xl:w-[45%]
+  xl:w-[40%]
   xl:my-[0px]
 `;
 const NextCartBtn = tw.button`
