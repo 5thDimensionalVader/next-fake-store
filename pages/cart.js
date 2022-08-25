@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 
 const Cart = () => {
   const { cart, subTotal, taxes, netTotal, setCart } = useCartContext();
-  
   const router = useRouter();
 
   const handleNextPage = () => {

@@ -9,7 +9,6 @@ import { StarIcon } from "@heroicons/react/solid";
 import useSWR from 'swr';
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
-import { useState } from 'react';
 
 
 const Product = ({ product }) => {
