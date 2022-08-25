@@ -1,26 +1,35 @@
 import tw from "tailwind-styled-components/dist/tailwind";
 import Head from "next/head";
+import Image from "next/image";
 import { useCartContext } from "../src/context/CartProvider";
 import Select from 'react-select';
 import countryList from "react-select-country-list";
 import { useState, useMemo } from "react";
 import { useRouter } from "next/router";
+import SummaryWithProducts from "../src/components/SummaryWithProducts";
 
 const Shipping = () => {
 
   const router = useRouter();
   const { cart, subTotal, taxes, netTotal, setCart } = useCartContext();
-  const [value, setValue] = useState('');
+  const [selectCountry, setSelectCountry] = useState('');
   const options = useMemo(() => countryList().getData(), []);
 
-  const [shippingOption, setShippingOption] = useState("");
+  const [shippingOption, setShippingOption] = useState("free".toUpperCase());
 
-  const changeHandler = value => {
-    setValue(value)
+  const changeHandler = country => {
+    setSelectCountry(country);
   };
 
   const handleNextPage = () => {
+  }
 
+  const props = {
+    cart: cart,
+    shippingOption: shippingOption,
+    netTotal: netTotal,
+    subTotal: subTotal,
+    taxes: taxes
   }
 
   return (
@@ -43,7 +52,7 @@ const Shipping = () => {
               <input type="text" placeholder="Address 2" className="text-black uppercase text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[100%]" />
 
               <div className="flex flex-col items-center gap-[20px] xl:flex-row">
-                <Select options={options} value={value} onChange={changeHandler} className=" text-start w-[330px] xl:w-[430px]" />
+                <Select options={options} value={selectCountry} onChange={changeHandler} className=" text-start w-[330px] xl:w-[430px]" />
                 <input type="text" placeholder="City" className="text-black uppercase text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]" />
               </div>
 
@@ -55,7 +64,7 @@ const Shipping = () => {
             {/* Radio Select */}
             <div className="flex flex-col items-center gap-[20px] py-[15px] px-[15px] xl:px-0 xl:flex-row border-b border-slate-400">
               <div className="flex items-center pl-4 rounded border border-slate-400 px-[20px] py-[15px] w-[320px]">
-                <input type="radio" value="free" name="shippingOption" className="w-4 h-4 text-blue-600 focus:ring-0" onChange={(e) => setShippingOption(e.target.value)} />
+                <input type="radio" value="free" name="shippingOption" className="w-4 h-4 text-blue-600 focus:ring-0" onChange={(e) => setShippingOption(e.target.value?.toUpperCase())} />
                 <label className="py-4 ml-2 w-full text-lg font-medium text-stone-500">Free Shipping</label>
               </div>
               <div className="flex items-center pl-4 rounded border border-slate-400 px-[20px] py-[15px] w-[320px]">
@@ -73,36 +82,11 @@ const Shipping = () => {
             </div>
           </div>
         </ShippingLeftSide>
+
         {/* Summary */}
         <ShippingRightSide>
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">Summary</span>
-          <div className={cart?.length !== 0 ? "py-[5px] border-y border-slate-400" : "py-[40px] border-y border-slate-400"}>
-            <div>
-              <span>
-                <input type="search" placeholder="Enter Coupon Code" className="text-black font-bold uppercase text-start py-[10px] px-[10px] rounded-sm focus:outline-none focus:border-stone-400 xl:w-[450px] disabled:bg-transparent" disabled />
-              </span>
-              <div className="flex flex-row space-x-[10px] py-[10px] text-base text-stone-500 border-t border-slate-400">
-                <div className="flex flex-col space-y-[20px] w-[50%] uppercase">
-                  <span>subtotal</span>
-                  <span>shipping</span>
-                  <span>taxes</span>
-                </div>
-                <div className="flex flex-col space-y-[20px] w-[50%]">
-                  <span>${subTotal}</span>
-                  <span>---</span>
-                  <span>${taxes}</span>
-                </div>
-              </div>
-              <div className="flex flex-row space-x-[10px] py-[10px] text-2xl text-stone-500 border-t border-slate-400">
-                <div className="flex flex-col space-y-[20px] w-[50%] uppercase font-semibold">
-                  <span>total</span>
-                </div>
-                <div className="flex flex-col space-y-[20px] w-[50%] uppercase font-semibold">
-                  <span>${netTotal}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SummaryWithProducts {...props} />
         </ShippingRightSide>
       </ShippingSection>
     </div>
