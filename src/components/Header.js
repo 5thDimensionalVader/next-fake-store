@@ -83,15 +83,9 @@ const BrandText = tw.div`
   pl-4
 `;
 
-// const LinkContainer = tw.div`
-//   hidden
-//   xl:flex items-center space-x-6
-//   tracking-wide
-// `;
-
 const LinkContainer = tw.div`
   invisible
-  lg:visible
+  xl:visible
   w-0
   lg:w-1/2 
   flex 
@@ -100,8 +94,6 @@ const LinkContainer = tw.div`
   tracking-wide
   justify-end
 `;
-
-//  bg-blue-500   hover:bg-blue-600 transition duration-200
 
 
 const CartBtn = tw.button`
