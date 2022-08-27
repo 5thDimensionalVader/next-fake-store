@@ -12,6 +12,7 @@ import { ThreeDots } from 'react-loader-spinner';
 
 
 const Product = ({ product }) => {
+
   const similarValue = 3;
   const productId = product?.id;
   const router = useRouter();

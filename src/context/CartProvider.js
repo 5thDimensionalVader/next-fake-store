@@ -1,5 +1,4 @@
-import React from 'react';
-import { useContext, createContext, useState } from 'react';
+import { useEffect, useContext, createContext, useState } from 'react';
 
 
 const CartContext = createContext();
@@ -7,6 +6,16 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [formUser, setFormUser] = useState({});
+
+  useEffect(() => {
+    const cartValue = window.localStorage.getItem("USER_CART");
+    setCart(JSON.parse(cartValue));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("USER_CART", JSON.stringify(cart));
+  }, [cart]);
+
 
   // calculation
   const subTotal = Math.round(cart?.map((product) => product?.price).reduce((previousValue, currentValue) => previousValue + currentValue, 0));

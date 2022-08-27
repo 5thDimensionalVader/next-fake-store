@@ -148,7 +148,7 @@ const Shipping = () => {
         </ShippingLeftSide >
 
         {/* Summary */}
-        <ShippingRightSide ShippingRightSide >
+        <ShippingRightSide >
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">Summary</span>
           <SummaryWithProducts {...summaryProps} />
         </ShippingRightSide>
