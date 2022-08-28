@@ -1,4 +1,3 @@
-import NavItem from "../components/NavItem";
 export const navLink = [
   {
     name: "Home",

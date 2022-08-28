@@ -16,25 +16,25 @@ const Payment = () => {
     taxes: taxes
   }
 
-  // // credit card state
-  // const [card, setCard] = useState({
-  //   cvc: '',
-  //   expiry: '',
-  //   focus: '',
-  //   name: '',
-  //   number: '',
-  // });
+  // credit card state
+  const [card, setCard] = useState({
+    cvc: '',
+    expiry: '',
+    focus: '',
+    name: '',
+    number: '',
+  });
 
-  // // handler function for the input focus
-  // const handleInputFocus = (e) => {
-  //   setCard({ focus: e.target.value });
-  // };
+  // handler function for the input focus
+  const handleInputFocus = (e) => {
+    setCard({ focus: e.target.value });
+  };
 
-  // // handler function for the input value
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setCard({ [name]: value });
-  // }
+  // handler function for the input value
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCard({ [name]: value });
+  }
 
 
 
@@ -47,24 +47,7 @@ const Payment = () => {
         <PaymentLeftSide>
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">Payment Method</span>
           <div className="py-[20px] px-[10px] border-t border-slate-400 xl:px-0">
-
-            {/* <div className="container flex items-center p-[20px] bg-slate-300 border border-slate-400 rounded-md shadow-md xl:flex-row max-w-[480px]">
-              <form className="flex flex-col items-center space-y-[10px]">
-                <span className="text-lg font-serif text-stone-500">Card Information</span>
-                <input type="tel" name="number" placeholder="Card Number" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]"
-                  onChange={handleInputChange} onFocus={handleInputFocus} />
-                <input type="text" name="name" placeholder="Card Name" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]"
-                  onChange={handleInputChange} onFocus={handleInputFocus} />
-                <input type="text" name="expiry" placeholder="Expiry" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]"
-                  onChange={handleInputChange} onFocus={handleInputFocus} />
-                <input type="text" name="cvc" placeholder="CVC" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]"
-                  onChange={handleInputChange} onFocus={handleInputFocus} />
-              </form>
-            </div> */}
-
-
-
-
+            
           </div>
         </PaymentLeftSide>
         <PaymentRightSide>
