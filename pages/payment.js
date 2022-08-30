@@ -2,10 +2,13 @@ import tw from "tailwind-styled-components/dist/tailwind";
 import { useCartContext } from "../src/context/CartProvider";
 import Head from "next/head";
 import SummaryWithProducts from "../src/components/SummaryWithProducts";
+import PaymentMethod from "../src/components/PaymentMethod";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 
 const Payment = () => {
+  const router = useRouter();
   const { cart, subTotal, taxes, netTotal, setCart, formUser } = useCartContext();
 
   const summaryProps = {
@@ -15,7 +18,7 @@ const Payment = () => {
     subTotal: subTotal,
     taxes: taxes
   }
-
+  
   // credit card state
   const [card, setCard] = useState({
     cvc: '',
@@ -47,7 +50,14 @@ const Payment = () => {
         <PaymentLeftSide>
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">Payment Method</span>
           <div className="py-[20px] px-[10px] border-t border-slate-400 xl:px-0">
-            
+            <PaymentMethod />
+            <div className="flex items-center justify-center xl:justify-start gap-[10px] py-[20px]">
+              <NextCartBtn type="submit">Pay Now</NextCartBtn>
+              <CancelCartBtn onClick={() => {
+                setCart([]);
+                router.push("/shop");
+              }}>Cancel</CancelCartBtn>
+            </div>
           </div>
         </PaymentLeftSide>
         <PaymentRightSide>
@@ -95,4 +105,30 @@ my-[10px]
 space-y-[10px]
 xl:w-[40%]
 xl:my-[0px]
+`;
+
+const NextCartBtn = tw.button`
+bg-blue-400
+text-blue-50
+  rounded-md
+  space-x-2
+  px-6
+  py-3
+  px-12
+  py-4
+  tracking-wide
+hover:bg-blue-500 transition duration-200
+`;
+
+const CancelCartBtn = tw.button`
+bg-red-400
+text-blue-50
+  rounded-md
+  space-x-2
+  px-6
+  py-3
+  px-12
+  py-4
+  tracking-wide
+hover:bg-red-500 transition duration-200
 `;
