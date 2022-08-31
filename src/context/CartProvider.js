@@ -6,6 +6,16 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [formUser, setFormUser] = useState({});
+  const [paymentMethod, setPaymentMethod] = useState('payPal');
+  // credit card state
+  const [card, setCard] = useState({
+    cvc: '',
+    expiry: '',
+    focus: '',
+    name: '',
+    number: '',
+  });
+
 
   useEffect(() => {
     const cartValue = window.localStorage.getItem("USER_CART");
@@ -22,7 +32,7 @@ export const CartProvider = ({ children }) => {
   const taxes = Math.round((subTotal * 7.5) / 100);
   const netTotal = Math.round((subTotal + taxes));
 
-  const value = { cart, setCart, subTotal, taxes, netTotal, formUser, setFormUser };
+  const value = { cart, setCart, subTotal, taxes, netTotal, formUser, setFormUser, card, setCard, paymentMethod, setPaymentMethod };
 
   return (
     <CartContext.Provider value={value}>

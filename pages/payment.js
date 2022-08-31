@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 const Payment = () => {
   const router = useRouter();
-  const { cart, subTotal, taxes, netTotal, setCart, formUser } = useCartContext();
+  const { cart, subTotal, taxes, netTotal, setCart, formUser, card, setCard } = useCartContext();
 
   const summaryProps = {
     cart: cart,
@@ -17,16 +17,21 @@ const Payment = () => {
     netTotal: netTotal,
     subTotal: subTotal,
     taxes: taxes
-  }
-  
-  // credit card state
-  const [card, setCard] = useState({
-    cvc: '',
-    expiry: '',
-    focus: '',
-    name: '',
-    number: '',
-  });
+  };
+
+  const paymentMethodProps = {
+    handleInput: handleInputChange,
+    handleFocus: handleInputFocus
+  };
+
+  // // credit card state
+  // const [card, setCard] = useState({
+  //   cvc: '',
+  //   expiry: '',
+  //   focus: '',
+  //   name: '',
+  //   number: '',
+  // });
 
   // handler function for the input focus
   const handleInputFocus = (e) => {
@@ -52,7 +57,7 @@ const Payment = () => {
           <div className="py-[20px] px-[10px] border-t border-slate-400 xl:px-0">
             <PaymentMethod />
             <div className="flex items-center justify-center xl:justify-start gap-[10px] py-[20px]">
-              <NextCartBtn type="submit">Pay Now</NextCartBtn>
+              <PayNowBtn type="submit">Pay Now</PayNowBtn>
               <CancelCartBtn onClick={() => {
                 setCart([]);
                 router.push("/shop");
@@ -107,7 +112,7 @@ xl:w-[40%]
 xl:my-[0px]
 `;
 
-const NextCartBtn = tw.button`
+const PayNowBtn = tw.button`
 bg-blue-400
 text-blue-50
   rounded-md

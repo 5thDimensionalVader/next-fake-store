@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 
 const Shipping = () => {
   const router = useRouter();
-  const { cart, subTotal, taxes, netTotal, setCart, formUser, setFormUser } = useCartContext();
+  const { cart, subTotal, taxes, netTotal, setCart, setFormUser } = useCartContext();
   const [selectCountry, setSelectCountry] = useState('');
   const options = useMemo(() => countryList().getData(), []);
 
@@ -43,9 +43,6 @@ const Shipping = () => {
       toastId: "nextPageToast",
     })
   }
-
-  // phone number regular expression
-  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   // useFormik
   const formik = useFormik({
