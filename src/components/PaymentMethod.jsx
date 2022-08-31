@@ -1,9 +1,9 @@
 import tw from "tailwind-styled-components/dist/tailwind";
 import { CreditCardIcon, CalendarIcon, InformationCircleIcon, UserIcon } from "@heroicons/react/outline";
-import { useState } from "react";
 import { useCartContext } from "../context/CartProvider";
+import { creditCardValidate } from "../utils/functions";
 
-const PaymentMethod = ({ handleInput, handleFocus }) => {
+const PaymentMethod = ({ handleInput }) => {
   const { paymentMethod, setPaymentMethod } = useCartContext();
   return (
     <>
@@ -24,28 +24,28 @@ const PaymentMethod = ({ handleInput, handleFocus }) => {
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                   <CreditCardIcon className="w-4 h-4 text-slate-400" />
                 </div>
-                <input type="text" name="number" className={paymentMethod !== "creditCard" ? "bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5 disabled:bg-slate-200" : "bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5"} placeholder="0000 0000 0000 0000" disabled={paymentMethod !== "creditCard"} />
+                <input type="text" name="number" className="bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5 disabled:bg-slate-200 invalid:border-red-400" placeholder="0000 0000 0000 0000" disabled={paymentMethod !== "creditCard"} onChange={handleInput} onInvalid={(e) => creditCardValidate(e.target.value) === true} />
               </div>
 
               <div className="relative mb-6 xl:w-[20%]">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                   <CalendarIcon className="w-4 h-4 text-slate-400" />
                 </div>
-                <input type="text" name="expiry" className={paymentMethod !== "creditCard" ? "bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5 disabled:bg-slate-200" : "bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5"} placeholder="MM/YY" disabled={paymentMethod !== "creditCard"} />
+                <input type="text" name="expiry" className="bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5 disabled:bg-slate-200" placeholder="MM/YY" disabled={paymentMethod !== "creditCard"} onChange={handleInput} />
               </div>
 
               <div className="relative mb-6 xl:w-[20%]">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                   <InformationCircleIcon className="w-4 h-4 text-slate-400" />
                 </div>
-                <input type="text" name="cvc" className={paymentMethod !== "creditCard" ? "bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5 disabled:bg-slate-200" : "bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5"} placeholder="CVC" disabled={paymentMethod !== "creditCard"} />
+                <input type="text" name="cvc" className="bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5 disabled:bg-slate-200" placeholder="CVC" disabled={paymentMethod !== "creditCard"} onChange={handleInput} />
               </div>
             </div>
             <div className="relative mb-6 w-full">
               <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                 <UserIcon className="w-4 h-4 text-slate-400" />
               </div>
-              <input type="text" name="name" className={paymentMethod !== "creditCard" ? "bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5 disabled:bg-slate-200" : "bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5"} placeholder="Card Holder Name" disabled={paymentMethod !== "creditCard"} />
+              <input type="text" name="name" className="bg-slate-50 border border-slate-400 text-sm text-slate-500 rounded-sm block w-full pl-10 p-2.5 disabled:bg-slate-200" placeholder="Card Holder Name" disabled={paymentMethod !== "creditCard"} onChange={handleInput} />
             </div>
           </form>
         </div>

@@ -11,7 +11,6 @@ export const CartProvider = ({ children }) => {
   const [card, setCard] = useState({
     cvc: '',
     expiry: '',
-    focus: '',
     name: '',
     number: '',
   });

@@ -3,13 +3,16 @@ import { useCartContext } from "../src/context/CartProvider";
 import Head from "next/head";
 import SummaryWithProducts from "../src/components/SummaryWithProducts";
 import PaymentMethod from "../src/components/PaymentMethod";
-import { useState } from "react";
 import { useRouter } from "next/router";
 
 
 const Payment = () => {
   const router = useRouter();
-  const { cart, subTotal, taxes, netTotal, setCart, formUser, card, setCard } = useCartContext();
+  const { cart, subTotal, taxes, netTotal, setCart, formUser, setCard } = useCartContext();
+  // handler function for the input value
+  const handleInputChange = (e) => {
+    setCard({ [e.target.name]: e.target.value });
+  }
 
   const summaryProps = {
     cart: cart,
@@ -21,28 +24,7 @@ const Payment = () => {
 
   const paymentMethodProps = {
     handleInput: handleInputChange,
-    handleFocus: handleInputFocus
   };
-
-  // // credit card state
-  // const [card, setCard] = useState({
-  //   cvc: '',
-  //   expiry: '',
-  //   focus: '',
-  //   name: '',
-  //   number: '',
-  // });
-
-  // handler function for the input focus
-  const handleInputFocus = (e) => {
-    setCard({ focus: e.target.value });
-  };
-
-  // handler function for the input value
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setCard({ [name]: value });
-  }
 
 
 
@@ -55,7 +37,7 @@ const Payment = () => {
         <PaymentLeftSide>
           <span className="text-2xl xl:text-4xl font-serif text-stone-500">Payment Method</span>
           <div className="py-[20px] px-[10px] border-t border-slate-400 xl:px-0">
-            <PaymentMethod />
+            <PaymentMethod {...paymentMethodProps} />
             <div className="flex items-center justify-center xl:justify-start gap-[10px] py-[20px]">
               <PayNowBtn type="submit">Pay Now</PayNowBtn>
               <CancelCartBtn onClick={() => {
