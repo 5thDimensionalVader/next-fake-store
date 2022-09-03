@@ -64,20 +64,19 @@ const BrowseAllItems = tw.div`
   xl:grid
   xl:grid-cols-4
   gap-[20px]
+  mx-[10px]
+  xl:mx-0
 `;
 
 const BrowseUIBtn = tw.button`
-xl:bg-blue-400
-  underline
-  xl:no-underline
-text-slate-500
-xl:text-blue-50
-  rounded-full
+bg-blue-400
+text-blue-50
+  rounded-md
   space-x-2
   px-6
   py-3
-  xl:px-12
-  xl:py-4
+  px-12
+  py-4
   tracking-wide
-xl:hover:bg-blue-500 transition duration-200
+hover:bg-blue-500 transition duration-200
 `;

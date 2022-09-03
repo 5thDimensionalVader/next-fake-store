@@ -8,20 +8,18 @@ const SummaryWithProducts = ({ cart, shippingOption, netTotal, subTotal, taxes }
         <div className="py-[20px] flex flex-col items-center space-y-[10px]">
           {
             cart?.map((product) => (
-              <>
-                <div className="container flex flex-row items-center mx-auto p-[15px] gap-[20px] text-stone-500 border border-slate-400 rounded-md shadow-md max-w-[350px]" key={product?.id}>
-                  <Image
-                    src={product?.image}
-                    width={100}
-                    height={100}
-                    objectFit="contain"
-                  />
-                  <div className="flex flex-col space-y-[10px] text-start text-sm font-medium">
-                    <span>{product?.title}</span>
-                    <span>${product?.price}</span>
-                  </div>
+              <div className="container flex flex-row items-center mx-auto p-[15px] gap-[20px] text-stone-500 border border-slate-400 rounded-md shadow-md max-w-[350px]" key={product?.id}>
+                <Image
+                  src={product?.image}
+                  width={100}
+                  height={100}
+                  objectFit="contain"
+                />
+                <div className="flex flex-col space-y-[10px] text-start text-sm font-medium">
+                  <span>{product?.title}</span>
+                  <span>${product?.price}</span>
                 </div>
-              </>
+              </div>
             ))
           }
         </div>

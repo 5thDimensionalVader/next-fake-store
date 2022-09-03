@@ -15,8 +15,8 @@ const ShopProductTile = ({ productImg, productTitle, productRating, productPrice
       <TileContainerLeft>
         <Image
           src={productImg}
-          width={150}
-          height={150}
+          width={100}
+          height={100}
           objectFit="contain"
         />
       </TileContainerLeft>

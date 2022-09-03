@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 const Payment = () => {
   const router = useRouter();
-  const { cart, subTotal, taxes, netTotal, setCart, formUser, setCard } = useCartContext();
+  const { cart, subTotal, taxes, netTotal, setCart, formUser, setCard, paymentMethod } = useCartContext();
   // handler function for the input value
   const handleInputChange = (e) => {
     setCard({ [e.target.name]: e.target.value });
@@ -26,11 +26,6 @@ const Payment = () => {
     handleInput: handleInputChange,
   };
 
-  const handlePayModal = () => {
-    //TODO: check the payment method selected and render the right modal
-    
-  };
-
   return (
     <>
       <Head>
@@ -42,7 +37,10 @@ const Payment = () => {
           <div className="py-[20px] px-[10px] border-t border-slate-400 xl:px-0">
             <PaymentMethod {...paymentMethodProps} />
             <div className="flex items-center justify-center xl:justify-start gap-[10px] py-[20px]">
-              <PayNowBtn onClick={handlePayModal}>Pay Now</PayNowBtn>
+              <PayNowBtn onClick={() => {
+                if (paymentMethod === "payPal") alert("Thank you for shopping with us today!\nYour PayPal transaction processed, check your email to confirm")
+                if (paymentMethod === "creditCard") alert(`Thank you for shopping with us today!\nThe sum of $${netTotal += formUser?.shippingOption === "20" ? 20 : 0} will be deducted from your credit card`)
+              }}>Pay Now</PayNowBtn>
               <CancelCartBtn onClick={() => {
                 setCart([]);
                 router.push("/shop");

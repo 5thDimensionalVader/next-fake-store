@@ -133,19 +133,16 @@ const ImagesContainer = tw.div`
 
 
 const HomeUIBtn = tw.button`
-xl:bg-blue-400
-  underline
-  xl:no-underline
-text-slate-500
-xl:text-blue-50
-  rounded-full
+bg-blue-400
+text-blue-50
+  rounded-md
   space-x-2
   px-6
   py-3
-  xl:px-12
-  xl:py-4
+  px-12
+  py-4
   tracking-wide
-xl:hover:bg-blue-500 transition duration-200
+hover:bg-blue-500 transition duration-200
 `;
 
 const FeaturedProductsSection = tw.section`
@@ -172,7 +169,7 @@ const FeaturedProductCarouselContainer = tw.div`
   flex-col 
   space-y-2
   px-14
-  max-w-[350px]
+  max-w-[370px]
   xl:max-w-[1200px]
   mx-auto
 `;

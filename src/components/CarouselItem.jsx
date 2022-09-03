@@ -13,8 +13,8 @@ const CarouselItem = ({ productTitle, productImg, productPrice, productId, produ
       })}>
         <Image
           src={productImg}
-          width={330}
-          height={210}
+          width={150}
+          height={150}
           objectFit="contain"
         />
         <span>{productTitle}</span>
@@ -43,4 +43,8 @@ const CarouselItemContainer = tw.div`
   hover:text-blue-500 
   transition 
   duration-200
+  border
+  border-slate-300
+  rounded-md
+  shadow-md
 `;

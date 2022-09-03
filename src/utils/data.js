@@ -8,7 +8,7 @@ export const navLink = [
     path: "/shop"
   },
   {
-    name: "Help",
-    path: "/help"
+    name: "Browse All",
+    path: "/browse"
   },
 ];

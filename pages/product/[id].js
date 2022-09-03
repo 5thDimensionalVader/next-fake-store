@@ -162,19 +162,16 @@ const ProductInformationRight = tw.div`
   xl:border-l border-slate-300
 `;
 const Add2CartBtn = tw.button`
- xl:bg-blue-400
- underline
- xl:no-underline
-text-slate-500
-xl:text-blue-50
- rounded-full
- space-x-2
- px-6
- py-3
- xl:px-12
- xl:py-4
- tracking-wide
-xl:hover:bg-blue-500 transition duration-200
+bg-blue-400
+text-blue-50
+  rounded-md
+  space-x-2
+  px-6
+  py-3
+  px-12
+  py-4
+  tracking-wide
+hover:bg-blue-500 transition duration-200
  `;
 const SimilarProductSection = tw.section`
   flex
