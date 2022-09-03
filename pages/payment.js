@@ -26,7 +26,10 @@ const Payment = () => {
     handleInput: handleInputChange,
   };
 
-
+  const handlePayModal = () => {
+    //TODO: check the payment method selected and render the right modal
+    
+  };
 
   return (
     <>
@@ -39,7 +42,7 @@ const Payment = () => {
           <div className="py-[20px] px-[10px] border-t border-slate-400 xl:px-0">
             <PaymentMethod {...paymentMethodProps} />
             <div className="flex items-center justify-center xl:justify-start gap-[10px] py-[20px]">
-              <PayNowBtn type="submit">Pay Now</PayNowBtn>
+              <PayNowBtn onClick={handlePayModal}>Pay Now</PayNowBtn>
               <CancelCartBtn onClick={() => {
                 setCart([]);
                 router.push("/shop");

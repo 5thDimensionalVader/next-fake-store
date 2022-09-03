@@ -16,7 +16,7 @@ const Shipping = () => {
   const [selectCountry, setSelectCountry] = useState('');
   const options = useMemo(() => countryList().getData(), []);
 
-  const [shippingOption, setShippingOption] = useState("free".toUpperCase());
+  const [shippingOption, setShippingOption] = useState("20");
 
   const changeHandler = country => {
     setSelectCountry(country);
@@ -124,11 +124,11 @@ const Shipping = () => {
               {/* Radio Select */}
               <div className="flex flex-col items-center gap-[20px] py-[15px] px-[15px] xl:px-0 xl:flex-row">
                 <div className="flex items-center pl-4 rounded border border-slate-400 px-[20px] py-[15px] w-[320px]">
-                  <input type="radio" value="free" name="shippingOption" className="w-4 h-4 text-blue-600 focus:ring-0" onChange={(e) => setShippingOption(e.target.value?.toUpperCase())} />
+                  <input type="radio" value="free" name="shippingOption" className="w-4 h-4 text-blue-600 focus:ring-0" onChange={(e) => setShippingOption(e.target.value?.toUpperCase())} checked={shippingOption === "FREE"} />
                   <label className="py-4 ml-2 w-full text-lg font-medium text-stone-500">Free Shipping</label>
                 </div>
                 <div className="flex items-center pl-4 rounded border border-slate-400 px-[20px] py-[15px] w-[320px]">
-                  <input type="radio" name="shippingOption" value="20" className="w-4 h-4 text-blue-600 focus:ring-0" onChange={(e) => setShippingOption(e.target.value)} />
+                  <input type="radio" name="shippingOption" value="20" className="w-4 h-4 text-blue-600 focus:ring-0" onChange={(e) => setShippingOption(e.target.value)} checked={shippingOption === "20"} />
                   <label className="py-4 ml-2 w-full text-lg font-medium text-stone-500">Next Day Delivery - $20</label>
                 </div>
               </div>
