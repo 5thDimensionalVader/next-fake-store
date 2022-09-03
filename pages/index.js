@@ -69,7 +69,7 @@ export default function Home({ imgProducts, products }) {
       {/* About Us Section */}
       <AboutUsSection id="about">
         <span className="text-2xl xl:text-4xl font-serif text-stone-500">About Fake Store</span>
-        <p className="text-base text-stone-400 px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe consectetur error maxime vitae delectus ab minus est modi tempora fugit.</p>
+        <p className="text-base text-stone-400 px-2">This is a prototype e-commerce web app that uses the Fake Store API to render products, allowing users to add and delete said products from their client cart.</p>
       </AboutUsSection>
     </>
   )
