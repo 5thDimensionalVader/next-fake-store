@@ -11,7 +11,7 @@ const PaymentMethod = ({ handleInput }) => {
         {/* Credit Card */}
         <div className="container flex flex-col gap-[15px] py-[20px] px-[10px] border border-slate-400 rounded-md shadow-md">
           <div className="flex items-center gap-[5px]">
-            <input id="creditCard" type="radio" name="paymentOption" value="creditCard" className="text-blue-600 focus:ring-0 h-5" checked={paymentMethod === 'creditCard'} onChange={(e) => setPaymentMethod(e.target.value)} />
+            <input id="creditCard" type="radio" name="paymentOption" value="creditCard" className="text-blue-600 focus:ring-0 h-5" checked={paymentMethod === 'creditCard'} onChange={(e) => setPaymentMethod(e.target.value)} disabled />
             <div className="ml-2">
               <label htmlFor="creditCard" className="text-lg font-medium text-stone-500">Credit Card</label>
               <p className="text-sm font-normal text-stone-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga quasi in voluptas expedita rem.</p>

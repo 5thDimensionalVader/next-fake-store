@@ -4,11 +4,12 @@ import Head from "next/head";
 import SummaryWithProducts from "../src/components/SummaryWithProducts";
 import PaymentMethod from "../src/components/PaymentMethod";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 
 const Payment = () => {
   const router = useRouter();
-  const { cart, subTotal, taxes, netTotal, setCart, formUser, setCard, paymentMethod } = useCartContext();
+  const { cart, subTotal, taxes, netTotal, setCart, formUser, card, setCard, paymentMethod } = useCartContext();
   // handler function for the input value
   const handleInputChange = (e) => {
     setCard({ [e.target.name]: e.target.value });
@@ -38,8 +39,48 @@ const Payment = () => {
             <PaymentMethod {...paymentMethodProps} />
             <div className="flex items-center justify-center xl:justify-start gap-[10px] py-[20px]">
               <PayNowBtn onClick={() => {
-                if (paymentMethod === "payPal") alert("Thank you for shopping with us today!\nYour PayPal transaction processed, check your email to confirm")
-                if (paymentMethod === "creditCard") alert(`Thank you for shopping with us today!\nThe sum of $${netTotal += formUser?.shippingOption === "20" ? 20 : 0} will be deducted from your credit card`)
+                if (paymentMethod === "payPal") {
+                  toast.success("Order placed!\nThank you for shopping with us.", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                    autoClose: 4000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                    toastId: "payPalSuccess",
+                  })
+                  setCart([]);
+                  router.push('/shop');
+                }
+                if (paymentMethod === "creditCard") {
+                  if (Object.values(card).filter(value => value != "").length !== 0) {
+                    toast.success("Thank you for shopping with us today.", {
+                      position: toast.POSITION.BOTTOM_RIGHT,
+                      autoClose: 4000,
+                      hideProgressBar: true,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: false,
+                      progress: undefined,
+                      toastId: "CCSuccess",
+                    })
+                    setCart([]);
+                    router.push('/shop');
+                  }
+                }
+                // else {
+                //   toast.warn("No credit card input.", {
+                //     position: toast.POSITION.BOTTOM_RIGHT,
+                //     autoClose: 4000,
+                //     hideProgressBar: true,
+                //     closeOnClick: true,
+                //     pauseOnHover: true,
+                //     draggable: false,
+                //     progress: undefined,
+                //     toastId: "CCWarn",
+                //   })
+                // }
               }}>Pay Now</PayNowBtn>
               <CancelCartBtn onClick={() => {
                 setCart([]);
