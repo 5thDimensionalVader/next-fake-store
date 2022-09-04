@@ -142,8 +142,6 @@ text-blue-50
   rounded-md
   space-x-2
   px-6
-  py-3
-  px-12
   py-4
   tracking-wide
 hover:bg-blue-500 transition duration-200
@@ -155,8 +153,6 @@ text-blue-50
   rounded-md
   space-x-2
   px-6
-  py-3
-  px-12
   py-4
   tracking-wide
 hover:bg-red-500 transition duration-200

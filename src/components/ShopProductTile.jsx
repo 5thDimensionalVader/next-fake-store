@@ -18,6 +18,7 @@ const ShopProductTile = ({ productImg, productTitle, productRating, productPrice
           width={100}
           height={100}
           objectFit="contain"
+          alt='shop-product-img'
         />
       </TileContainerLeft>
       <TileContainerRight>
@@ -39,8 +40,8 @@ const TileContainer = tw.div`
   flex-row
   items-center
   mx-auto
+  py-[10px]
   space-x-[10px]
-  p-2
   border
   border-slate-300
   rounded-md
@@ -53,7 +54,8 @@ const TileContainerLeft = tw.div`
   flex
   items-center
   w-[30%]
-  p-6
+  px-[10px]
+  py-[5px]
 `;
 const TileContainerRight = tw.div`
   flex
@@ -62,6 +64,4 @@ const TileContainerRight = tw.div`
   w-[70%]
   px-3
   space-y-4
-  border-l
-  border-slate-300
 `;

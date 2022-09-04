@@ -43,6 +43,7 @@ const Shop = ({ categories, browseProducts }) => {
             width={350}
             height={250}
             objectFit="contain"
+            alt='placeholder-img'
           />
         </NewsLetterLeftSide>
         <NewsLetterRightSide>
@@ -114,94 +115,83 @@ text-blue-50
   rounded-md
   space-x-2
   px-6
-  py-3
-  px-12
   py-4
   tracking-wide
-hover:bg-blue-500 transition duration-200
-`;
+hover:bg-blue-500 transition duration-200`;
 
 const FeaturedCategories = tw.section`
-  flex
-  flex-col
-  items-center
-  justify-center
-  py-[50px]
-  mb-[10px]
-  space-y-[20px]
-  border-y
-  border-slate-400
-`;
+flex
+flex-col
+items-center
+justify-center
+py-[50px]
+mb-[10px]
+space-y-[20px]
+border-y
+border-slate-400`;
 
 const FeaturedCategoriesItems = tw.div`
-  grid
-  grid-cols-2
-  xl:grid-cols-4
-  gap-[10px]
-  xl:flex-row
-  xl:space-x-2
-  items-center
-  justify-center
-  mx-auto
-`;
+grid
+grid-cols-2
+xl:grid-cols-4
+gap-[10px]
+xl:flex-row
+xl:space-x-2
+items-center
+justify-center
+mx-auto`;
 
 const NewsLetterSection = tw.section`
-  flex
-  flex-col
-  items-center
-  xl:flex-row
-  border-b
+flex
+flex-col
+items-center
+xl:flex-row
+border-b
 border-slate-400
-  py-[40px]
-`;
+py-[40px]`;
 
 const NewsLetterLeftSide = tw.div`
-  flex
-  items-center
-  justify-center
-  mx-auto
-  xl:w-[40%]
-`;
+flex
+items-center
+justify-center
+mx-auto
+xl:w-[40%]`;
 
 const NewsLetterRightSide = tw.div`
-  flex
-  flex-col
-  items-center
-  xl:items-start
-  mx-auto
-  px-[20px]
-  space-y-[20px]
-  py-[20px]
-  xl:w-[60%]
-`;
+flex
+flex-col
+items-center
+xl:items-start
+mx-auto
+px-[20px]
+space-y-[20px]
+py-[20px]
+xl:w-[60%]`;
 
 const AllProductSection = tw.section`
-  flex
-  flex-col
-  items-center
-  space-y-[20px]
-  xl:flex-row
-  border-b
+flex
+flex-col
+items-center
+space-y-[20px]
+xl:flex-row
+border-b
 border-slate-400
-  py-[40px]
-`;
+py-[40px]`;
 
 const AllProductLeftSide = tw.div`
-  flex
-  flex-col
-  items-center
-  mx-auto
-  xl:w-[30%]
-  space-y-[20px]
-`;
+flex
+flex-col
+items-center
+mx-auto
+xl:w-[30%]
+space-y-[20px]`;
 
 const AllProductRightSide = tw.div`
-  flex
-  flex-col
-  px-[10px]
-  xl:px-[20px]
-  xl:grid
-  xl:grid-cols-2
-  gap-[20px]
-  xl:w-[70%]
-`;
+flex
+flex-col
+px-[10px]
+xl:px-[20px]
+xl:grid
+xl:grid-cols-2
+gap-[20px]
+xl:w-[70%]`;

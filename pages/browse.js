@@ -59,13 +59,14 @@ const BrowseAllSection = tw.section`
 `;
 
 const BrowseAllItems = tw.div`
+  container
   flex
   flex-col
   xl:grid
   xl:grid-cols-4
   gap-[20px]
   mx-[10px]
-  xl:mx-0
+  xl:mx-auto
 `;
 
 const BrowseUIBtn = tw.button`
@@ -74,8 +75,6 @@ text-blue-50
   rounded-md
   space-x-2
   px-6
-  py-3
-  px-12
   py-4
   tracking-wide
 hover:bg-blue-500 transition duration-200

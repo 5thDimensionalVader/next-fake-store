@@ -14,6 +14,7 @@ const CategoryTile = ({ catName }) => {
           width={150}
           height={150}
           objectFit="contain"
+          alt='category-img'
         />
         <span className="text-sm py-[5px]">{catName?.toUpperCase()}</span>
       </TileContainer>

@@ -1,4 +1,3 @@
-import React from 'react';
 import tw from 'tailwind-styled-components/dist/tailwind';
 import Head from 'next/head';
 import ShopProductTile from '../../src/components/ShopProductTile';

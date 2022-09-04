@@ -99,13 +99,12 @@ const LinkContainer = tw.div`
 const CartBtn = tw.button`
   text-blue-400
   hover:bg-slate-200 transition duration-100
-  hover:text-blue-500 transition duration-100
+  hover:text-blue-500
   rounded-sm
   inline-flex
   items-baseline
   space-x-1
   px-4
   py-2
-  rounded
   tracking-wide
 `;

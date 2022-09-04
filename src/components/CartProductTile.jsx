@@ -18,6 +18,7 @@ const CartProductTile = ({ productImg, productTitle, productPrice, productDes, p
           width={100}
           height={100}
           objectFit="contain"
+          alt='product-img'
         />
       </TileContainerFirst>
       <TileContainerCenter>

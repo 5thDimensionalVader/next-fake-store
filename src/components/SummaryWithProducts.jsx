@@ -14,6 +14,7 @@ const SummaryWithProducts = ({ cart, shippingOption, netTotal, subTotal, taxes }
                   width={100}
                   height={100}
                   objectFit="contain"
+                  alt="product-img"
                 />
                 <div className="flex flex-col space-y-[10px] text-start text-sm font-medium">
                   <span>{product?.title}</span>
@@ -41,7 +42,7 @@ const SummaryWithProducts = ({ cart, shippingOption, netTotal, subTotal, taxes }
             <span>total</span>
           </div>
           <div className="flex flex-col space-y-[20px] w-[50%] uppercase font-semibold">
-            <span>${netTotal += shippingOption == "20" ? 20 : 0}</span>
+            <span>${netTotal + shippingOption == "20" ? 20 : 0}</span>
           </div>
         </div>
       </div>

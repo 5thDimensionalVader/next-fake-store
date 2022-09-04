@@ -16,6 +16,7 @@ const CarouselItem = ({ productTitle, productImg, productPrice, productId, produ
           width={150}
           height={150}
           objectFit="contain"
+          alt='carousel-product-img'
         />
         <span>{productTitle}</span>
         <span>${productPrice}</span>

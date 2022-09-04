@@ -19,6 +19,7 @@ const SimilarProductTile = ({ productImg, productTitle, productRating, productPr
           width={150}
           height={150}
           objectFit="contain"
+          alt='product-img'
         />
       </TileContainerLeft>
       <TileContainerRight>
