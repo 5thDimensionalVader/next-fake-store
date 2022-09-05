@@ -33,7 +33,9 @@ const CarouselItemContainer = tw.div`
   items-center
   justify-center
   text-center
-  space-y-2
+  gap-[15px]
+  px-[10px]
+  py-[10px]
   min-w-[250px] 
   min-h-[170px] 
   xl:min-w-[330px] 

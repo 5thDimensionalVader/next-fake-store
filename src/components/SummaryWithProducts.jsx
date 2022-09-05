@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 const SummaryWithProducts = ({ cart, shippingOption, netTotal, subTotal, taxes }) => {
+  const netShippingValue = shippingOption === "20" ? 20 : 0;
 
   return (
     <div className={cart?.length !== 0 ? "py-[5px] border-y border-slate-400" : "py-[40px] border-y border-slate-400"}>
@@ -42,7 +43,7 @@ const SummaryWithProducts = ({ cart, shippingOption, netTotal, subTotal, taxes }
             <span>total</span>
           </div>
           <div className="flex flex-col space-y-[20px] w-[50%] uppercase font-semibold">
-            <span>${netTotal + shippingOption == "20" ? 20 : 0}</span>
+            <span>${netTotal + netShippingValue}</span>
           </div>
         </div>
       </div>
