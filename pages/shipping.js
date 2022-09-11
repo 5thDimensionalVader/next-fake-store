@@ -92,32 +92,32 @@ const Shipping = () => {
             {/* Shipping Form */}
             <form className="container flex flex-col items-center mx-auto gap-[10px] border-b border-slate-400 py-[15px] xl:items-start" autoComplete="false" onSubmit={formik.handleSubmit}>
               <div className="flex flex-col items-center gap-[20px] xl:flex-row">
-                <input type="text" id="firstName" name="firstName" placeholder="First Name" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]" value={formik.values.firstName}
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px]" value={formik.values.firstName}
                   onChange={formik.handleChange} />
                 {formik.touched.firstName && formik.errors.firstName ? notification(formik.errors.firstName) : null}
-                <input type="text" id="lastName" name="lastName" placeholder="Last Name" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]" value={formik.values.lastName}
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px]" value={formik.values.lastName}
                   onChange={formik.handleChange} />
                 {formik.touched.lastName && formik.errors.lastName ? notification(formik.errors.lastName) : null}
               </div>
 
-              <input type="text" id="addressOne" name="addressOne" placeholder="Address 1" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[100%]" value={formik.values.addressOne}
+              <input type="text" id="addressOne" name="addressOne" placeholder="Address 1" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[95%]" value={formik.values.addressOne}
                 onChange={formik.handleChange} />
               {formik.touched.addressOne && formik.errors.addressOne ? notification(formik.errors.addressOne) : null}
-              <input type="text" id="addressTwo" name="addressTwo" placeholder="Address 2" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[100%]" value={formik.values.addressTwo}
+              <input type="text" id="addressTwo" name="addressTwo" placeholder="Address 2" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[95%]" value={formik.values.addressTwo}
                 onChange={formik.handleChange} />
               {formik.touched.addressTwo && formik.errors.addressTwo ? notification(formik.errors.addressTwo) : null}
 
               <div className="flex flex-col items-center gap-[20px] xl:flex-row">
-                <Select options={options} value={selectCountry} onChange={changeHandler} className=" text-start w-[330px] xl:w-[430px]" />
-                <input type="text" id="city" name="city" placeholder="City" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]" value={formik.values.city}
+                <Select options={options} value={selectCountry} onChange={changeHandler} className=" text-start w-[330px]" />
+                <input type="text" id="city" name="city" placeholder="City" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px]" value={formik.values.city}
                   onChange={formik.handleChange} />
               </div>
 
               <div className="flex flex-col items-center gap-[20px] xl:flex-row">
-                <input type="text" id="postalCode" name="postalCode" placeholder="Zip/Postal Code" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]" value={formik.values.postalCode}
+                <input type="text" id="postalCode" name="postalCode" placeholder="Zip/Postal Code" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px]" value={formik.values.postalCode}
                   onChange={formik.handleChange} />
                 {formik.touched.postalCode && formik.errors.postalCode ? notification(formik.errors.postalCode) : null}
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px] xl:w-[430px]" value={formik.values.phoneNumber}
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" className="text-black text-start py-[10px] px-[10px] border border-slate-400 rounded-sm focus:outline-none focus:border-stone-400 w-[330px]" value={formik.values.phoneNumber}
                   onChange={formik.handleChange} />
                 {formik.touched.phoneNumber && formik.errors.phoneNumber ? notification(formik.errors.phoneNumber) : null}
               </div>
