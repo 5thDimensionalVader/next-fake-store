@@ -18,7 +18,7 @@ const Footer = () => {
         </LinkContainer>
         <CompanyContainer>
           <span className="text-blue-500">&copy;</span>
-          <BrandText>fake shop</BrandText>
+          <BrandText>fake store</BrandText>
         </CompanyContainer>
       </FooterContainer>
     </>

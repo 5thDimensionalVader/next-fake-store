@@ -18,7 +18,7 @@ const Header = () => {
       <Wrapper>
         <NavBar>
           <BrandText className="text-slate-500 hover:text-slate-700 cursor-pointer">
-            fake shop
+            fake store
           </BrandText>
 
           <LinkContainer>
